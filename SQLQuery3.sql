@@ -1,0 +1,2 @@
+USE DataBase_1
+DROP DATABASE DataBase_2
