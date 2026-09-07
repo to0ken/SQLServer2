@@ -1,0 +1,2 @@
+CREATE DATABASE DataBase_2
+go
