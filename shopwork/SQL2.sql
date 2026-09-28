@@ -1,0 +1,32 @@
+ALTER DATABASE ShopDB
+MODIFY FILEGROUP MyDB_FG1 DEFAULT;
+
+USE ShopDB;
+go
+
+CREATE TABLE Products
+(
+    ProductID INT IDENTITY(1,1) PRIMARY KEY,
+    ProductName NVARCHAR(100) NOT NULL,
+    CategoryID INT,
+    Price DECIMAL(10,2)
+)
+ON FG_index1;
+GO
+
+CREATE TABLE Customers
+(
+    CustomerID INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(100)
+
+
+)
+ON FG_index1;
+GO
+
+ALTER TABLE Orders
+ADD CONSTRAINT FK_Orders_Customers
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
+GO
